@@ -6,7 +6,9 @@ import com.github.javafaker.Faker;
 import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.Usuario;
 import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.dto.UsuarioDto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -31,6 +33,23 @@ public class UsuarioRestController {
         return usuarioDto;
     }
 
+    @GetMapping("/listar")
+    public List<Usuario> listar() {
+        Faker faker = new Faker(Locale.getDefault());
+        int indice = faker.number().numberBetween(5, 10);
+        List<Usuario> usuarios = new ArrayList<>();
+        for (int i = 0; i < indice; i++) {
+            Usuario usuario = new Usuario(
+                faker.name().firstName(), 
+                faker.name().lastName(), 
+                faker.name().lastName(),
+                faker.internet().emailAddress()
+            );
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+    
     @GetMapping("/detalles-map")
     public Map<String, Object> getDetallesMap() {
         Map<String, Object> respuesta = new HashMap<>();
