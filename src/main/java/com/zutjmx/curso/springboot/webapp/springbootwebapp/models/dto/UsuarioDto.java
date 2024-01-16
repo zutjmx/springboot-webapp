@@ -6,7 +6,7 @@ public class UsuarioDto {
     private String titulo;
     private String saludo;
     private Usuario usuario;
-
+    
     public String getTitulo() {
         return titulo;
     }

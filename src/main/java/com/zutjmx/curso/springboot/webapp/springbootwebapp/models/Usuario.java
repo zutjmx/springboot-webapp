@@ -5,6 +5,7 @@ public class Usuario {
     private String paterno;
     private String materno;
     private String email;
+    private String url;
 
     public Usuario(String nombre, String paterno, String materno, String email) {
         this.nombre = nombre;
@@ -43,6 +44,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
     
 }

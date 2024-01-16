@@ -12,6 +12,8 @@
         <li th:text="${usuarioDto.usuario.paterno}"></li>
         <li th:text="${usuarioDto.usuario.materno}"></li>
         <li th:text="${usuarioDto.usuario.email}"></li>
+        <li th:if="${usuarioDto.usuario.url}" th:text="${usuarioDto.usuario.url}"></li>
+        <li th:if="${usuarioDto.usuario.url==null}" th:text="${'sin url'}"></li>
     </ul>
 </body>
 </html>

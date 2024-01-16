@@ -21,6 +21,7 @@ public class UsuarioController {
                                     faker.name().lastName(), 
                                     faker.name().lastName(), 
                                     faker.internet().emailAddress());
+        usuario.setUrl(faker.internet().url());
         UsuarioDto usuarioDto = new UsuarioDto();
         usuarioDto.setUsuario(usuario);
         usuarioDto.setTitulo("Detalles");
