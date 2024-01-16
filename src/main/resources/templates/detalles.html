@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${titulo}"></title>
+    <title th:text="${usuarioDto.titulo}"></title>
 </head>
 <body>
-    <h1 th:text="${saludo}"></h1>
+    <h1 th:text="${usuarioDto.saludo}"></h1>
     <ul>
-        <li th:text="${usuario.nombre}"></li>
-        <li th:text="${usuario.paterno}"></li>
-        <li th:text="${usuario.materno}"></li>
-        <li th:text="${usuario.email}"></li>
-        <li th:text="${url}"></li>
+        <li th:text="${usuarioDto.usuario.nombre}"></li>
+        <li th:text="${usuarioDto.usuario.paterno}"></li>
+        <li th:text="${usuarioDto.usuario.materno}"></li>
+        <li th:text="${usuarioDto.usuario.email}"></li>
     </ul>
 </body>
 </html>

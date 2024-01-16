@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.javafaker.Faker;
 import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.Usuario;
+import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.dto.UsuarioDto;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -18,7 +19,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UsuarioRestController {
     
     @GetMapping("/detalles")
-    public Map<String, Object> getDetalles() {
+    public UsuarioDto getDetalles() {
+        Faker faker = new Faker(Locale.getDefault());
+        Usuario usuario = new Usuario(faker.name().firstName(), 
+                                    faker.name().lastName(), 
+                                    faker.name().lastName(),
+                                    faker.internet().emailAddress());
+        UsuarioDto usuarioDto = new UsuarioDto();
+        usuarioDto.setUsuario(usuario);
+        usuarioDto.setTitulo("Hola Mundo desde un RestController");
+        return usuarioDto;
+    }
+
+    @GetMapping("/detalles-map")
+    public Map<String, Object> getDetallesMap() {
         Map<String, Object> respuesta = new HashMap<>();
         Faker faker = new Faker(Locale.getDefault());
         Usuario usuario = new Usuario(faker.name().firstName(), 
