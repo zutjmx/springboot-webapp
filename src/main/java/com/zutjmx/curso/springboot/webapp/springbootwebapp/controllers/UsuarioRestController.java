@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
 @RequestMapping("/api")
@@ -33,5 +34,12 @@ public class UsuarioRestController {
         return respuesta;
     }
     
+    @RequestMapping(path = "/gotpersonaje", method=RequestMethod.GET)
+    public Map<String, Object> gotPersonaje() {
+        Map<String, Object> respuesta = new HashMap<>();
+        Faker faker = new Faker();
+        respuesta.put("personaje", faker.gameOfThrones().character());
+        return respuesta;
+    }
     
 }
