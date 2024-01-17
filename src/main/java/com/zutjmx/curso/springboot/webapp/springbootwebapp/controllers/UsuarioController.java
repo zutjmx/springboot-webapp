@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.github.javafaker.Faker;
 import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.Usuario;
@@ -34,24 +35,9 @@ public class UsuarioController {
 
     @GetMapping("/listar")
     public String listar(ModelMap modelMap) {
-        List<Usuario> usuarios = new ArrayList<>();
-        Faker faker = new Faker(Locale.getDefault());
-        int indice = faker.number().numberBetween(10, 20);
-        //int indice = 0;
-        for (int i = 0; i < indice; i++) {
-            Usuario usuario = new Usuario(
-                faker.name().firstName(), 
-                faker.name().lastName(), 
-                faker.name().lastName(), 
-                faker.internet().emailAddress()
-                );
-            usuarios.add(usuario);
-        }
         modelMap.addAttribute("titulo", "Listado de Usuarios");
-        modelMap.addAttribute("usuarios", usuarios);
         return "listar";
     }
-    
 
     @GetMapping("/detalles-modelo-map")
     public String detallesModeloMap(Model modelo, Map<String, Object> mapa) {
@@ -67,4 +53,21 @@ public class UsuarioController {
         return "detalles-modelo-map";
     }
 
+    @ModelAttribute("usuarios")
+    public List<Usuario> listaDeUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        Faker faker = new Faker(Locale.getDefault());
+        int indice = faker.number().numberBetween(10, 20);
+        for (int i = 0; i < indice; i++) {
+            Usuario usuario = new Usuario(
+                faker.name().firstName(), 
+                faker.name().lastName(), 
+                faker.name().lastName(), 
+                faker.internet().emailAddress()
+                );
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+    
 }
