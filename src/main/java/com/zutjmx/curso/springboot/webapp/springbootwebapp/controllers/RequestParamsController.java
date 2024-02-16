@@ -43,8 +43,19 @@ public class RequestParamsController {
 
     @GetMapping("/request")
     public ParametroDto request(HttpServletRequest request) {
+        Integer codigo = 0;
+
+        try {
+            codigo = Integer.parseInt(request.getParameter("codigo"));
+        } catch (Exception e) {
+            ParametroDto parametroDtoError = new ParametroDto();
+            parametroDtoError.setCodigo(codigo);
+            parametroDtoError.setMensaje("Ocurrió un error al intentar convertir el código a un valor númerico.");
+            return parametroDtoError;
+        }
+
         ParametroDto parametroDto = new ParametroDto();
-        parametroDto.setCodigo(Integer.parseInt(request.getParameter("codigo")));
+        parametroDto.setCodigo(codigo);
         parametroDto.setMensaje(request.getParameter("mensaje"));
         return parametroDto;
     }
