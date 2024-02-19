@@ -32,6 +32,12 @@ public class PathVariableController {
     @Value("${config.listaDeValores}")
     private String[] listaDeValores;
 
+    @Value("${mensaje.autor}")
+    private String autor;
+
+    @Value("${mensaje.vocalesacento}")
+    private String vocalesacento;
+
     @GetMapping("/baz/{mensaje}")
     public ParametroDto baz(@PathVariable(name = "mensaje") String mensaje) {
         ParametroDto parametroDto = new ParametroDto();
@@ -64,6 +70,8 @@ public class PathVariableController {
         jsonMap.put("mensaje", mensaje);
         jsonMap.put("listaDeValores", listaDeValores);
         jsonMap.put("saludo", saludo);
+        jsonMap.put("autor", autor);
+        jsonMap.put("vocalesacento", vocalesacento);
 
         return jsonMap;
     }
