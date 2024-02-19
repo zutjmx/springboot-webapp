@@ -7,6 +7,7 @@ import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.Usuario;
 import com.zutjmx.curso.springboot.webapp.springbootwebapp.models.dto.ParametroDto;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +31,13 @@ public class PathVariableController {
     private String mensaje;
 
     @Value("${config.listaDeValores}")
-    private String[] listaDeValores;
+    private List<String> listaDeValores;
+
+    @Value("#{'${config.listaDeValores}'.toUpperCase().split(',')}")
+    private List<String> valoresLista;
+
+    @Value("#{'${config.listaDeValores}'.toUpperCase()}")
+    private String valorCadena;
 
     @Value("${mensaje.autor}")
     private String autor;
@@ -72,6 +79,8 @@ public class PathVariableController {
         jsonMap.put("saludo", saludo);
         jsonMap.put("autor", autor);
         jsonMap.put("vocalesacento", vocalesacento);
+        jsonMap.put("valoresLista", valoresLista);
+        jsonMap.put("valorCadena", valorCadena);
 
         return jsonMap;
     }
