@@ -90,7 +90,8 @@ public class PathVariableController {
         Map<String, Object> jsonMap = new HashMap<>();
         
         jsonMap.put("codigo", codigo);
-        jsonMap.put("codigoDos", environment.getProperty("config.codigo"));
+        jsonMap.put("codigoDos", Integer.valueOf(environment.getProperty("config.codigo")));
+        jsonMap.put("codigoTres", environment.getProperty("config.codigo",Long.class));
         jsonMap.put("username", username);
         jsonMap.put("mensaje", mensaje);
         jsonMap.put("mensajeDos", environment.getProperty("config.mensaje"));
