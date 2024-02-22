@@ -15,5 +15,10 @@
         <li th:if="${usuarioDto.usuario.url}" th:text="${usuarioDto.usuario.url}"></li>
         <li th:if="${usuarioDto.usuario.url==null}" th:text="${'sin url'}"></li>
     </ul>
+    <a th:href="@{/listar}">Ver Listado</a>
+    <br>
+    <a th:href="@{/api/listar}" target="_blank">Json de Usuarios</a>
+    <br>
+    <a th:href="@{'/api/parametros/foo?mensaje=' + ${usuarioDto.titulo}}">Json de parámetros</a>
 </body>
 </html>
